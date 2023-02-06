@@ -6,15 +6,15 @@
 # install docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
+	   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+	      $(lsb_release -cs) \
+	         stable"
 apt-get update
 apt-get install docker-ce docker-ce-cli containerd.io
 systemctl enable docker
 systemctl start docker
 usermod -aG docker ubuntu
-## Extra packages install
+## Extra packages
 apt-get install vim git -y
 
 # run jenkins
@@ -25,3 +25,4 @@ docker run -p 8080:8080 -p 50000:50000 -v /var/jenkins_home:/var/jenkins_home -d
 # show endpoint
 echo 'Jenkins installed'
 echo 'You should now be able to access jenkins at: http://'$(curl -s ifconfig.co)':8080'
+
